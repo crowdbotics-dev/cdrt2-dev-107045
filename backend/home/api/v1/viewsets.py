@@ -1,6 +1,4 @@
 from rest_framework import viewsets
-from home.models import Sffgg,Cvdh,Cvdh,Sffgg,Cvdh,Sffgg
-from .serializers import SffggSerializer,CvdhSerializer,CvdhSerializer,SffggSerializer,CvdhSerializer,SffggSerializer
 from rest_framework import authentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.viewsets import ModelViewSet, ViewSet
@@ -32,13 +30,3 @@ class LoginViewSet(ViewSet):
         token, created = Token.objects.get_or_create(user=user)
         user_serializer = UserSerializer(user)
         return Response({"token": token.key, "user": user_serializer.data})
-
-class SffggViewSet(viewsets.ModelViewSet):
-    serializer_class = SffggSerializer
-    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
-    queryset = Sffgg.objects.all()
-
-class CvdhViewSet(viewsets.ModelViewSet):
-    serializer_class = CvdhSerializer
-    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
-    queryset = Cvdh.objects.all()
