@@ -6,6 +6,24 @@ const cdrtdevAPI = axios.create({
 function api_docs_schema_retrieve(payload) {
   return cdrtdevAPI.get(`/api-docs/schema/`, { params: { lang: payload.lang } })
 }
+function api_v1_cvdh_list(payload) {
+  return cdrtdevAPI.get(`/api/v1/cvdh/`)
+}
+function api_v1_cvdh_create(payload) {
+  return cdrtdevAPI.post(`/api/v1/cvdh/`, payload)
+}
+function api_v1_cvdh_retrieve(payload) {
+  return cdrtdevAPI.get(`/api/v1/cvdh/${payload.id}/`)
+}
+function api_v1_cvdh_update(payload) {
+  return cdrtdevAPI.put(`/api/v1/cvdh/${payload.id}/`, payload)
+}
+function api_v1_cvdh_partial_update(payload) {
+  return cdrtdevAPI.patch(`/api/v1/cvdh/${payload.id}/`, payload)
+}
+function api_v1_cvdh_destroy(payload) {
+  return cdrtdevAPI.delete(`/api/v1/cvdh/${payload.id}/`)
+}
 function api_v1_login_create(payload) {
   return cdrtdevAPI.post(`/api/v1/login/`, payload)
 }
@@ -65,6 +83,12 @@ function rest_auth_user_partial_update(payload) {
 }
 export const apiService = {
   api_docs_schema_retrieve,
+  api_v1_cvdh_list,
+  api_v1_cvdh_create,
+  api_v1_cvdh_retrieve,
+  api_v1_cvdh_update,
+  api_v1_cvdh_partial_update,
+  api_v1_cvdh_destroy,
   api_v1_login_create,
   api_v1_sffgg_list,
   api_v1_sffgg_create,
